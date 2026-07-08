@@ -507,214 +507,258 @@ def poster_html(uploaded_file, poster_data):
 <meta charset="UTF-8" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
-* {{ box-sizing: border-box; }}
-body {{
+*{box-sizing:border-box;}
+
+body{
     margin:0;
-    padding:22px;
+    padding:20px;
     background:#111;
-    font-family: 'Georgia', 'Times New Roman', 'DejaVu Serif', serif;
+    font-family:"Cormorant Garamond","Georgia","Times New Roman",serif;
     color:#f4efe8;
-}}
-.wrap {{
+}
+
+.wrap{
     width:100%;
     display:flex;
     flex-direction:column;
     align-items:center;
     gap:14px;
-}}
-#poster {{
+}
+
+#poster{
     width:900px;
     height:1125px;
     background:
-        radial-gradient(circle at 50% 47%, rgba(255,255,255,0.075), transparent 35%),
-        radial-gradient(circle at 50% 47%, rgba(200,132,84,0.12), transparent 48%),
-        linear-gradient(180deg,#050505 0%,#0a0a0a 56%,#020202 100%);
+    radial-gradient(circle at 50% 47%, rgba(255,255,255,.06), transparent 36%),
+    linear-gradient(180deg,#040404,#090909,#020202);
+
     position:relative;
     overflow:hidden;
-    padding:48px 70px 34px;
-    box-shadow:0 30px 80px rgba(0,0,0,.65);
-}}
-#poster:before {{
-    content:'';
-    position:absolute;
-    inset:30px;
-    border:1px solid rgba(191,124,78,.16);
-    pointer-events:none;
-}}
-.brand-top {{
-    position:relative;
-    z-index:2;
+
+    padding:55px 70px 34px;
+}
+
+.brand-top{
     text-align:center;
-    color:rgba(255,255,255,.54);
-    font-size:13px;
-    letter-spacing:4px;
-    font-weight:400;
-    margin-bottom:20px;
-}}
-.title {{
-    position:relative;
-    z-index:2;
-    text-align:center;
-    color:#d49a6a;
-    font-size:1px;
-    line-height:1.18;
-    font-weight:400;
-    letter-spacing:1.2px;
-    text-transform:uppercase;
-    max-width:700px;
-    margin:0 auto;
-}}
-.subtitle {{
-    position:relative;
-    z-index:2;
-    text-align:center;
-    font-size:15px;
-    line-height:1.25;
-    margin-top:12px;
-    color:rgba(255,245,234,.76);
-    font-weight:300;
-    letter-spacing:.25px;
-}}
-.product-area {{
-    position:relative;
-    height:665px;
-    margin-top:2px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}}
-.glow {{
-    position:absolute;
-    width:780px;
-    height:360px;
-    background:radial-gradient(ellipse at center, rgba(255,255,255,.13), rgba(212,144,93,.08) 34%, transparent 72%);
-    filter:blur(28px);
-    top:180px;
-}}
-.product-img {{
-    position:relative;
-    z-index:2;
-    max-width:850px;
-    max-height:650px;
-    object-fit:contain;
-    filter:drop-shadow(0 34px 36px rgba(0,0,0,.76));
-}}
-.details {{
-    position:relative;
-    z-index:2;
-    margin-top:0;
-    padding:16px 0 14px;
-    border-top:1px solid rgba(191,124,78,.34);
-    border-bottom:1px solid rgba(191,124,78,.24);
-}}
-.detail-row {{
-    display:grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap:10px;
-    text-align:center;
-    align-items:start;
-}}
-.label {{
-    color:rgba(201,139,96,.86);
+    color:rgba(255,255,255,.35);
+
     font-size:10px;
-    font-weight:400;
-    letter-spacing:1.7px;
-    text-transform:uppercase;
-    margin-bottom:6px;
-}}
-.value {{
-    color:rgba(255,245,234,.92);
-    font-size:14px;
-    line-height:1.2;
     font-weight:300;
-}}
-.price-label {{
-    position:relative;
-    z-index:2;
+
+    letter-spacing:6px;
+
+    margin-bottom:26px;
+}
+
+.title{
+
     text-align:center;
-    color:rgba(201,139,96,.84);
-    font-size:13px;
-    font-weight:400;
-    letter-spacing:1.4px;
-    margin-top:24px;
-    text-transform:uppercase;
-}}
-.price {{
-    position:relative;
-    z-index:2;
-    text-align:center;
+
     color:#d49a6a;
-    font-size:38px;
-    line-height:1;
-    font-weight:400;
-    margin-top:9px;
-    letter-spacing:.6px;
-}}
-.brand {{
-    position:absolute;
-    bottom:24px;
-    left:0;
-    right:0;
-    text-align:center;
-    color:rgba(255,255,255,.38);
-    font-size:13px;
-    letter-spacing:4px;
+
+    font-size:28px;
+
     font-weight:300;
-}}
-.download {{
-    width:900px;
-    border:0;
-    border-radius:12px;
-    padding:15px 20px;
-    background:#d4905d;
-    color:#111;
-    font-size:18px;
-    font-weight:700;
-    cursor:pointer;
-}}
-.hint {{
-    width:900px;
-    color:#ccc;
-    font-family:Arial,sans-serif;
-    font-size:13px;
+
+    letter-spacing:5px;
+
+    text-transform:uppercase;
+
+    line-height:1.15;
+
+    max-width:700px;
+
+    margin:auto;
+}
+
+.subtitle{
+
     text-align:center;
-}}
+
+    margin-top:10px;
+
+    color:rgba(255,255,255,.58);
+
+    font-size:13px;
+
+    font-weight:300;
+
+    letter-spacing:2px;
+}
+
+.product-area{
+
+    height:690px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+.glow{
+
+    position:absolute;
+
+    width:760px;
+
+    height:320px;
+
+    background:
+    radial-gradient(circle,
+    rgba(212,144,93,.08),
+    transparent 70%);
+
+    filter:blur(35px);
+}
+
+.product-img{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:860px;
+
+    max-height:670px;
+
+    object-fit:contain;
+
+    filter:drop-shadow(0 25px 35px rgba(0,0,0,.75));
+}
+
+.details{
+
+    border-top:1px solid rgba(201,139,96,.22);
+
+    padding-top:22px;
+
+    padding-bottom:10px;
+}
+
+.detail-row{
+
+    display:grid;
+
+    grid-template-columns:repeat(5,1fr);
+
+    gap:8px;
+
+    text-align:center;
+}
+
+.label{
+
+    color:rgba(201,139,96,.72);
+
+    font-size:9px;
+
+    font-weight:300;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    margin-bottom:7px;
+}
+
+.value{
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:300;
+
+    line-height:1.35;
+}
+
+.price-label{
+
+    margin-top:22px;
+
+    text-align:center;
+
+    color:rgba(201,139,96,.65);
+
+    font-size:11px;
+
+    font-weight:300;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+}
+
+.price{
+
+    margin-top:10px;
+
+    text-align:center;
+
+    color:#d49a6a;
+
+    font-size:30px;
+
+    font-weight:300;
+
+    letter-spacing:2px;
+}
+
+.brand{
+
+    position:absolute;
+
+    bottom:28px;
+
+    left:0;
+
+    right:0;
+
+    text-align:center;
+
+    color:rgba(255,255,255,.28);
+
+    font-size:11px;
+
+    letter-spacing:6px;
+
+    font-weight:300;
+}
+
+.download{
+
+    width:900px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#d4905d;
+
+    color:#111;
+
+    padding:15px;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+}
+
+.hint{
+
+    width:900px;
+
+    text-align:center;
+
+    color:#999;
+
+    font-size:12px;
+}
 </style>
-</head>
-<body>
-<div class="wrap">
-<div id="poster">
-<div class="brand-top">LANA &amp; LONA</div>
-<div class="title">{title}</div>
-<div class="subtitle">{gold}</div>
-<div class="product-area"><div class="glow"></div><img class="product-img" src="{image_data_url}" /></div>
-<div class="details">
-  <div class="detail-row">
-    <div><div class="label">Золото</div><div class="value">585 проба</div></div>
-    <div><div class="label">Розміри</div><div class="value">{sizes}</div></div>
-    <div><div class="label">Ширина</div><div class="value">{width_text}</div></div>
-    <div><div class="label">Покриття</div><div class="value">{coating}</div></div>
-    <div><div class="label">Вага</div><div class="value">{weight}</div></div>
-  </div>
-</div>
-<div class="price-label">Середня вартість</div>
-<div class="price">{price} грн</div>
-<div class="brand">LANA &amp; LONA</div>
-</div>
-<button class="download" onclick="downloadPoster()">Завантажити PNG</button>
-<div class="hint">Якщо кнопка не спрацювала з першого разу — натисни ще раз після повного завантаження фото.</div>
-</div>
-<script>
-async function downloadPoster() {{
- const poster = document.getElementById('poster');
- const canvas = await html2canvas(poster, {{backgroundColor:null, scale:2, useCORS:true}});
- const link = document.createElement('a');
- link.download = 'lana_lona_offer.png';
- link.href = canvas.toDataURL('image/png');
- link.click();
-}}
-</script>
-</body>
 </html>
 """.format(**data)
 
