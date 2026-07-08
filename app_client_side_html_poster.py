@@ -500,6 +500,7 @@ def poster_html(uploaded_file, poster_data):
         "price": html.escape(poster_data.get("price", "")),
         "image_data_url": image_data_url,
     }
+
     return """
 <!DOCTYPE html>
 <html lang="uk">
@@ -507,248 +508,247 @@ def poster_html(uploaded_file, poster_data):
 <meta charset="UTF-8" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
-*{
-    box-sizing:border-box;
-}
+* {{ box-sizing:border-box; }}
 
-body{
+body {{
     margin:0;
-    padding:20px;
+    padding:18px;
     background:#111;
-    font-family:"Cormorant Garamond","Georgia","Times New Roman",serif;
+    font-family: Georgia, 'Times New Roman', 'DejaVu Serif', serif;
     color:#f4efe8;
-}
+}}
 
-.wrap{
+.wrap {{
     width:100%;
     display:flex;
     flex-direction:column;
     align-items:center;
     gap:12px;
-}
+}}
 
-#poster{
+#poster {{
     width:900px;
     height:1125px;
-
-    background:
-    radial-gradient(circle at 50% 45%,rgba(255,255,255,.05),transparent 36%),
-    linear-gradient(180deg,#040404,#090909,#020202);
-
-    overflow:hidden;
     position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 50% 43%, rgba(255,255,255,.055), transparent 34%),
+        radial-gradient(circle at 50% 43%, rgba(185,115,70,.075), transparent 47%),
+        linear-gradient(180deg,#030303 0%,#080808 50%,#020202 100%);
+    padding:46px 74px 30px;
+    box-shadow:0 28px 80px rgba(0,0,0,.65);
+}}
 
-    padding:55px 65px 35px;
-}
-
-#poster:before{
+#poster:before {{
     content:"";
     position:absolute;
-    inset:28px;
-    border:1px solid rgba(201,139,96,.12);
-}
+    inset:32px;
+    border:1px solid rgba(198,139,96,.10);
+    pointer-events:none;
+}}
 
-.brand-top{
-    display:none;
-}
-
-.title{
-
+.brand-top {{
     position:relative;
     z-index:2;
-
     text-align:center;
-
-    color:#d39a67;
-
-    font-size:26px;
-
-    font-weight:300;
-
-    letter-spacing:5px;
-
-    line-height:1.2;
-
-    text-transform:uppercase;
-
-    max-width:720px;
-
-    margin:auto;
-}
-
-.subtitle{
-
-    position:relative;
-    z-index:2;
-
-    margin-top:10px;
-
-    text-align:center;
-
-    color:rgba(255,255,255,.55);
-
-    font-size:12px;
-
-    font-weight:300;
-
-    letter-spacing:2px;
-}
-
-.product-area{
-
-    position:relative;
-
-    height:720px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-}
-
-.glow{
-
-    position:absolute;
-
-    width:760px;
-
-    height:320px;
-
-    background:
-    radial-gradient(circle,
-    rgba(212,144,93,.08),
-    transparent 72%);
-
-    filter:blur(35px);
-}
-
-.product-img{
-
-    position:relative;
-
-    z-index:2;
-
-    max-width:880px;
-
-    max-height:690px;
-
-    object-fit:contain;
-
-    filter:drop-shadow(0 30px 40px rgba(0,0,0,.8));
-}
-
-.details{
-
-    position:relative;
-
-    z-index:2;
-
-    padding-top:18px;
-
-    border-top:none;
-
-    border-bottom:none;
-}
-
-.detail-row{
-
-    display:grid;
-
-    grid-template-columns:repeat(5,1fr);
-
-    gap:8px;
-
-    text-align:center;
-}
-
-.label{
-
-    color:rgba(201,139,96,.70);
-
+    color:rgba(255,255,255,.38);
     font-size:9px;
-
+    line-height:1;
     font-weight:300;
+    letter-spacing:5.5px;
+    margin-bottom:18px;
+}}
 
-    letter-spacing:3px;
-
-    text-transform:uppercase;
-
-    margin-bottom:6px;
-}
-
-.value{
-
-    color:white;
-
-    font-size:15px;
-
-    font-weight:300;
-
+.title {{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    color:#d49a6a;
+    font-size:20px;
     line-height:1.35;
-}
+    font-weight:300;
+    letter-spacing:3.4px;
+    text-transform:uppercase;
+    max-width:690px;
+    margin:0 auto;
+}}
 
-.price-label{
+.subtitle {{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    color:rgba(255,245,234,.58);
+    font-size:10px;
+    line-height:1.35;
+    font-weight:300;
+    letter-spacing:2.2px;
+    margin-top:9px;
+    text-transform:uppercase;
+}}
 
-    display:none;
-}
+.product-area {{
+    position:relative;
+    height:735px;
+    margin-top:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}}
 
-.price{
-
-    display:none;
-}
-
-.brand{
-
+.glow {{
     position:absolute;
+    width:760px;
+    height:300px;
+    top:225px;
+    background:radial-gradient(ellipse at center, rgba(255,255,255,.10), rgba(212,144,93,.055) 36%, transparent 74%);
+    filter:blur(38px);
+}}
 
+.product-img {{
+    position:relative;
+    z-index:2;
+    max-width:870px;
+    max-height:720px;
+    object-fit:contain;
+    filter:drop-shadow(0 30px 34px rgba(0,0,0,.78));
+}}
+
+.details {{
+    position:relative;
+    z-index:2;
+    margin:0 12px;
+    padding:14px 0 10px;
+    border-top:1px solid rgba(201,139,96,.18);
+}}
+
+.detail-row {{
+    display:grid;
+    grid-template-columns:repeat(5, 1fr);
+    gap:8px;
+    text-align:center;
+    align-items:start;
+}}
+
+.label {{
+    color:rgba(201,139,96,.62);
+    font-size:7.5px;
+    line-height:1;
+    font-weight:300;
+    letter-spacing:2.7px;
+    text-transform:uppercase;
+    margin-bottom:7px;
+}}
+
+.value {{
+    color:rgba(255,245,234,.86);
+    font-size:11.5px;
+    line-height:1.35;
+    font-weight:300;
+    letter-spacing:.8px;
+}}
+
+.price-label {{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    color:rgba(201,139,96,.58);
+    font-size:9px;
+    line-height:1;
+    font-weight:300;
+    letter-spacing:3.5px;
+    text-transform:uppercase;
+    margin-top:18px;
+}}
+
+.price {{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    color:#d49a6a;
+    font-size:24px;
+    line-height:1;
+    font-weight:300;
+    letter-spacing:1.8px;
+    margin-top:8px;
+}}
+
+.brand {{
+    position:absolute;
+    bottom:24px;
     left:0;
     right:0;
-    bottom:22px;
-
+    z-index:2;
     text-align:center;
-
-    color:rgba(255,255,255,.28);
-
-    font-size:10px;
-
+    color:rgba(255,255,255,.25);
+    font-size:8.5px;
+    line-height:1;
     font-weight:300;
-
     letter-spacing:6px;
-}
+}}
 
-.download{
-
+.download {{
     width:900px;
-
     border:0;
-
     border-radius:10px;
-
-    padding:15px;
-
-    background:#d39a67;
-
+    padding:14px 20px;
+    background:#d4905d;
     color:#111;
-
-    font-size:16px;
-
+    font-size:15px;
     font-weight:600;
-
     cursor:pointer;
-}
+}}
 
-.hint{
-
+.hint {{
     width:900px;
-
-    color:#888;
-
-    text-align:center;
-
+    color:#999;
+    font-family:Arial,sans-serif;
     font-size:12px;
-}
+    text-align:center;
+}}
 </style>
+</head>
+<body>
+<div class="wrap">
+    <div id="poster">
+        <div class="brand-top">LANA &amp; LONA</div>
+        <div class="title">{title}</div>
+        <div class="subtitle">{gold}</div>
+
+        <div class="product-area">
+            <div class="glow"></div>
+            <img class="product-img" src="{image_data_url}" />
+        </div>
+
+        <div class="details">
+            <div class="detail-row">
+                <div><div class="label">Золото</div><div class="value">585</div></div>
+                <div><div class="label">Розміри</div><div class="value">{sizes}</div></div>
+                <div><div class="label">Ширина</div><div class="value">{width_text}</div></div>
+                <div><div class="label">Покриття</div><div class="value">{coating}</div></div>
+                <div><div class="label">Вага</div><div class="value">{weight}</div></div>
+            </div>
+        </div>
+
+        <div class="price-label">Середня вартість</div>
+        <div class="price">{price} грн</div>
+        <div class="brand">LANA &amp; LONA</div>
+    </div>
+
+    <button class="download" onclick="downloadPoster()">Завантажити PNG</button>
+    <div class="hint">Якщо кнопка не спрацювала з першого разу — натисни ще раз після повного завантаження фото.</div>
+</div>
+
+<script>
+async function downloadPoster() {{
+    const poster = document.getElementById('poster');
+    const canvas = await html2canvas(poster, {{backgroundColor:null, scale:2, useCORS:true}});
+    const link = document.createElement('a');
+    link.download = 'lana_lona_offer.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+}}
+</script>
+</body>
 </html>
 """.format(**data)
 
