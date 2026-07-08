@@ -507,7 +507,9 @@ def poster_html(uploaded_file, poster_data):
 <meta charset="UTF-8" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
-*{box-sizing:border-box;}
+*{
+    box-sizing:border-box;
+}
 
 body{
     margin:0;
@@ -522,64 +524,70 @@ body{
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:14px;
+    gap:12px;
 }
 
 #poster{
     width:900px;
     height:1125px;
+
     background:
-    radial-gradient(circle at 50% 47%, rgba(255,255,255,.06), transparent 36%),
+    radial-gradient(circle at 50% 45%,rgba(255,255,255,.05),transparent 36%),
     linear-gradient(180deg,#040404,#090909,#020202);
 
-    position:relative;
     overflow:hidden;
+    position:relative;
 
-    padding:55px 70px 34px;
+    padding:55px 65px 35px;
+}
+
+#poster:before{
+    content:"";
+    position:absolute;
+    inset:28px;
+    border:1px solid rgba(201,139,96,.12);
 }
 
 .brand-top{
-    text-align:center;
-    color:rgba(255,255,255,.35);
-
-    font-size:10px;
-    font-weight:300;
-
-    letter-spacing:6px;
-
-    margin-bottom:26px;
+    display:none;
 }
 
 .title{
 
+    position:relative;
+    z-index:2;
+
     text-align:center;
 
-    color:#d49a6a;
+    color:#d39a67;
 
-    font-size:28px;
+    font-size:26px;
 
     font-weight:300;
 
     letter-spacing:5px;
 
+    line-height:1.2;
+
     text-transform:uppercase;
 
-    line-height:1.15;
-
-    max-width:700px;
+    max-width:720px;
 
     margin:auto;
 }
 
 .subtitle{
 
-    text-align:center;
+    position:relative;
+    z-index:2;
 
     margin-top:10px;
 
-    color:rgba(255,255,255,.58);
+    text-align:center;
 
-    font-size:13px;
+    color:rgba(255,255,255,.55);
+
+    font-size:12px;
 
     font-weight:300;
 
@@ -588,7 +596,9 @@ body{
 
 .product-area{
 
-    height:690px;
+    position:relative;
+
+    height:720px;
 
     display:flex;
 
@@ -608,7 +618,7 @@ body{
     background:
     radial-gradient(circle,
     rgba(212,144,93,.08),
-    transparent 70%);
+    transparent 72%);
 
     filter:blur(35px);
 }
@@ -619,22 +629,26 @@ body{
 
     z-index:2;
 
-    max-width:860px;
+    max-width:880px;
 
-    max-height:670px;
+    max-height:690px;
 
     object-fit:contain;
 
-    filter:drop-shadow(0 25px 35px rgba(0,0,0,.75));
+    filter:drop-shadow(0 30px 40px rgba(0,0,0,.8));
 }
 
 .details{
 
-    border-top:1px solid rgba(201,139,96,.22);
+    position:relative;
 
-    padding-top:22px;
+    z-index:2;
 
-    padding-bottom:10px;
+    padding-top:18px;
+
+    border-top:none;
+
+    border-bottom:none;
 }
 
 .detail-row{
@@ -650,7 +664,7 @@ body{
 
 .label{
 
-    color:rgba(201,139,96,.72);
+    color:rgba(201,139,96,.70);
 
     font-size:9px;
 
@@ -660,7 +674,7 @@ body{
 
     text-transform:uppercase;
 
-    margin-bottom:7px;
+    margin-bottom:6px;
 }
 
 .value{
@@ -676,70 +690,46 @@ body{
 
 .price-label{
 
-    margin-top:22px;
-
-    text-align:center;
-
-    color:rgba(201,139,96,.65);
-
-    font-size:11px;
-
-    font-weight:300;
-
-    letter-spacing:4px;
-
-    text-transform:uppercase;
+    display:none;
 }
 
 .price{
 
-    margin-top:10px;
-
-    text-align:center;
-
-    color:#d49a6a;
-
-    font-size:30px;
-
-    font-weight:300;
-
-    letter-spacing:2px;
+    display:none;
 }
 
 .brand{
 
     position:absolute;
 
-    bottom:28px;
-
     left:0;
-
     right:0;
+    bottom:22px;
 
     text-align:center;
 
     color:rgba(255,255,255,.28);
 
-    font-size:11px;
-
-    letter-spacing:6px;
+    font-size:10px;
 
     font-weight:300;
+
+    letter-spacing:6px;
 }
 
 .download{
 
     width:900px;
 
-    border:none;
+    border:0;
 
-    border-radius:12px;
-
-    background:#d4905d;
-
-    color:#111;
+    border-radius:10px;
 
     padding:15px;
+
+    background:#d39a67;
+
+    color:#111;
 
     font-size:16px;
 
@@ -752,9 +742,9 @@ body{
 
     width:900px;
 
-    text-align:center;
+    color:#888;
 
-    color:#999;
+    text-align:center;
 
     font-size:12px;
 }
