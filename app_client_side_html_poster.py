@@ -508,25 +508,169 @@ def poster_html(uploaded_file, poster_data):
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
 * {{ box-sizing: border-box; }}
-body {{ margin:0; padding:24px; background:#111; font-family: Georgia, 'Times New Roman', 'DejaVu Serif', serif; color:#f4efe8; }}
-.wrap {{ width:100%; display:flex; flex-direction:column; align-items:center; gap:16px; }}
-#poster {{ width:900px; height:1125px; background: radial-gradient(circle at 50% 38%, rgba(150,95,55,0.20), transparent 34%), radial-gradient(circle at 50% 52%, rgba(255,255,255,0.08), transparent 28%), linear-gradient(180deg,#050505 0%,#0b0b0b 55%,#030303 100%); border:1px solid rgba(191,124,78,.55); position:relative; overflow:hidden; padding:54px 58px 40px; box-shadow:0 30px 80px rgba(0,0,0,.65); }}
-#poster:before {{ content:''; position:absolute; inset:26px; border:1px solid rgba(191,124,78,.32); pointer-events:none; }}
-.title {{ position:relative; z-index:2; text-align:center; color:#d4905d; font-size:46px; line-height:1.08; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; margin-top:8px; }}
-.subtitle {{ position:relative; z-index:2; text-align:center; font-size:27px; line-height:1.25; margin-top:20px; color:#f7efe6; letter-spacing:.4px; }}
-.product-area {{ position:relative; height:445px; margin-top:24px; display:flex; align-items:center; justify-content:center; }}
-.glow {{ position:absolute; width:620px; height:260px; background:radial-gradient(ellipse at center, rgba(255,255,255,.18), rgba(212,144,93,.10) 36%, transparent 70%); filter:blur(20px); top:105px; }}
-.product-img {{ position:relative; z-index:2; max-width:720px; max-height:430px; object-fit:contain; filter:drop-shadow(0 28px 34px rgba(0,0,0,.65)); }}
-.info-grid {{ position:relative; z-index:2; display:grid; grid-template-columns:repeat(5,1fr); border-top:2px solid rgba(191,124,78,.75); border-bottom:2px solid rgba(191,124,78,.75); margin-top:8px; padding:22px 0; }}
-.cell {{ min-height:112px; padding:0 10px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; border-left:1px solid rgba(191,124,78,.42); }}
-.cell:first-child {{ border-left:none; }}
-.label {{ color:#d4905d; font-size:18px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:12px; }}
-.value {{ color:#fff7ef; font-size:23px; line-height:1.16; font-weight:600; }}
-.price-label {{ position:relative; z-index:2; text-align:center; color:#d4905d; font-size:30px; font-weight:700; letter-spacing:.8px; margin-top:34px; text-transform:uppercase; }}
-.price {{ position:relative; z-index:2; text-align:center; color:#d4905d; font-size:72px; line-height:1; font-weight:800; margin-top:12px; letter-spacing:1px; }}
-.brand {{ position:absolute; bottom:28px; left:0; right:0; text-align:center; color:rgba(255,255,255,.58); font-size:24px; letter-spacing:3px; font-weight:600; }}
-.download {{ width:900px; border:0; border-radius:12px; padding:16px 20px; background:#d4905d; color:#111; font-size:20px; font-weight:800; cursor:pointer; }}
-.hint {{ width:900px; color:#ccc; font-family:Arial,sans-serif; font-size:14px; text-align:center; }}
+body {{
+    margin:0;
+    padding:24px;
+    background:#111;
+    font-family: Georgia, 'Times New Roman', 'DejaVu Serif', serif;
+    color:#f4efe8;
+}}
+.wrap {{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:16px;
+}}
+#poster {{
+    width:900px;
+    height:1125px;
+    background:
+        radial-gradient(circle at 50% 42%, rgba(255,255,255,0.10), transparent 34%),
+        radial-gradient(circle at 50% 43%, rgba(196,126,74,0.16), transparent 42%),
+        linear-gradient(180deg,#050505 0%,#0b0b0b 55%,#030303 100%);
+    position:relative;
+    overflow:hidden;
+    padding:54px 68px 38px;
+    box-shadow:0 30px 80px rgba(0,0,0,.65);
+}}
+#poster:before {{
+    content:'';
+    position:absolute;
+    inset:28px;
+    border:1px solid rgba(191,124,78,.22);
+    pointer-events:none;
+}}
+.title {{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    color:#d49a6a;
+    font-size:34px;
+    line-height:1.12;
+    font-weight:500;
+    letter-spacing:1.4px;
+    text-transform:uppercase;
+    margin-top:4px;
+}}
+.subtitle {{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    font-size:22px;
+    line-height:1.25;
+    margin-top:14px;
+    color:#efe7de;
+    font-weight:400;
+    letter-spacing:.2px;
+}}
+.product-area {{
+    position:relative;
+    height:585px;
+    margin-top:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}}
+.glow {{
+    position:absolute;
+    width:760px;
+    height:330px;
+    background:radial-gradient(ellipse at center, rgba(255,255,255,.16), rgba(212,144,93,.10) 38%, transparent 72%);
+    filter:blur(24px);
+    top:150px;
+}}
+.product-img {{
+    position:relative;
+    z-index:2;
+    max-width:820px;
+    max-height:555px;
+    object-fit:contain;
+    filter:drop-shadow(0 30px 34px rgba(0,0,0,.72));
+}}
+.details {{
+    position:relative;
+    z-index:2;
+    margin-top:0;
+    padding:22px 0 18px;
+    border-top:1px solid rgba(191,124,78,.55);
+    border-bottom:1px solid rgba(191,124,78,.42);
+}}
+.detail-row {{
+    display:flex;
+    justify-content:center;
+    gap:22px;
+    flex-wrap:wrap;
+    text-align:center;
+}}
+.detail-item {{
+    min-width:118px;
+}}
+.label {{
+    color:#c98b60;
+    font-size:14px;
+    font-weight:500;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+    margin-bottom:7px;
+}}
+.value {{
+    color:#fff5ea;
+    font-size:19px;
+    line-height:1.16;
+    font-weight:400;
+}}
+.price-label {{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    color:#c98b60;
+    font-size:22px;
+    font-weight:500;
+    letter-spacing:.6px;
+    margin-top:28px;
+    text-transform:uppercase;
+}}
+.price {{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    color:#d49a6a;
+    font-size:54px;
+    line-height:1;
+    font-weight:500;
+    margin-top:10px;
+    letter-spacing:.6px;
+}}
+.brand {{
+    position:absolute;
+    bottom:26px;
+    left:0;
+    right:0;
+    text-align:center;
+    color:rgba(255,255,255,.48);
+    font-size:20px;
+    letter-spacing:3px;
+    font-weight:400;
+}}
+.download {{
+    width:900px;
+    border:0;
+    border-radius:12px;
+    padding:16px 20px;
+    background:#d4905d;
+    color:#111;
+    font-size:20px;
+    font-weight:800;
+    cursor:pointer;
+}}
+.hint {{
+    width:900px;
+    color:#ccc;
+    font-family:Arial,sans-serif;
+    font-size:14px;
+    text-align:center;
+}}
 </style>
 </head>
 <body>
@@ -535,12 +679,14 @@ body {{ margin:0; padding:24px; background:#111; font-family: Georgia, 'Times Ne
 <div class="title">{title}</div>
 <div class="subtitle">{gold}</div>
 <div class="product-area"><div class="glow"></div><img class="product-img" src="{image_data_url}" /></div>
-<div class="info-grid">
-<div class="cell"><div class="label">Золото</div><div class="value">585 проба</div></div>
-<div class="cell"><div class="label">Розміри</div><div class="value">{sizes}</div></div>
-<div class="cell"><div class="label">Ширина</div><div class="value">{width_text}</div></div>
-<div class="cell"><div class="label">Покриття</div><div class="value">{coating}</div></div>
-<div class="cell"><div class="label">Вага</div><div class="value">{weight}</div></div>
+<div class="details">
+  <div class="detail-row">
+    <div class="detail-item"><div class="label">Золото</div><div class="value">585 проба</div></div>
+    <div class="detail-item"><div class="label">Розміри</div><div class="value">{sizes}</div></div>
+    <div class="detail-item"><div class="label">Ширина</div><div class="value">{width_text}</div></div>
+    <div class="detail-item"><div class="label">Покриття</div><div class="value">{coating}</div></div>
+    <div class="detail-item"><div class="label">Вага</div><div class="value">{weight}</div></div>
+  </div>
 </div>
 <div class="price-label">Середня вартість виробу:</div>
 <div class="price">{price} грн</div>
