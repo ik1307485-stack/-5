@@ -510,9 +510,9 @@ def poster_html(uploaded_file, poster_data):
 * {{ box-sizing: border-box; }}
 body {{
     margin:0;
-    padding:24px;
+    padding:22px;
     background:#111;
-    font-family: Georgia, 'Times New Roman', 'DejaVu Serif', serif;
+    font-family: 'Georgia', 'Times New Roman', 'DejaVu Serif', serif;
     color:#f4efe8;
 }}
 .wrap {{
@@ -520,115 +520,123 @@ body {{
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:16px;
+    gap:14px;
 }}
 #poster {{
     width:900px;
     height:1125px;
     background:
-        radial-gradient(circle at 50% 42%, rgba(255,255,255,0.10), transparent 34%),
-        radial-gradient(circle at 50% 43%, rgba(196,126,74,0.16), transparent 42%),
-        linear-gradient(180deg,#050505 0%,#0b0b0b 55%,#030303 100%);
+        radial-gradient(circle at 50% 47%, rgba(255,255,255,0.075), transparent 35%),
+        radial-gradient(circle at 50% 47%, rgba(200,132,84,0.12), transparent 48%),
+        linear-gradient(180deg,#050505 0%,#0a0a0a 56%,#020202 100%);
     position:relative;
     overflow:hidden;
-    padding:54px 68px 38px;
+    padding:48px 70px 34px;
     box-shadow:0 30px 80px rgba(0,0,0,.65);
 }}
 #poster:before {{
     content:'';
     position:absolute;
-    inset:28px;
-    border:1px solid rgba(191,124,78,.22);
+    inset:30px;
+    border:1px solid rgba(191,124,78,.16);
     pointer-events:none;
+}}
+.brand-top {{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    color:rgba(255,255,255,.54);
+    font-size:13px;
+    letter-spacing:4px;
+    font-weight:400;
+    margin-bottom:20px;
 }}
 .title {{
     position:relative;
     z-index:2;
     text-align:center;
     color:#d49a6a;
-    font-size:34px;
-    line-height:1.12;
-    font-weight:500;
-    letter-spacing:1.4px;
+    font-size:25px;
+    line-height:1.18;
+    font-weight:400;
+    letter-spacing:1.2px;
     text-transform:uppercase;
-    margin-top:4px;
+    max-width:700px;
+    margin:0 auto;
 }}
 .subtitle {{
     position:relative;
     z-index:2;
     text-align:center;
-    font-size:22px;
+    font-size:15px;
     line-height:1.25;
-    margin-top:14px;
-    color:#efe7de;
-    font-weight:400;
-    letter-spacing:.2px;
+    margin-top:12px;
+    color:rgba(255,245,234,.76);
+    font-weight:300;
+    letter-spacing:.25px;
 }}
 .product-area {{
     position:relative;
-    height:585px;
-    margin-top:10px;
+    height:665px;
+    margin-top:2px;
     display:flex;
     align-items:center;
     justify-content:center;
 }}
 .glow {{
     position:absolute;
-    width:760px;
-    height:330px;
-    background:radial-gradient(ellipse at center, rgba(255,255,255,.16), rgba(212,144,93,.10) 38%, transparent 72%);
-    filter:blur(24px);
-    top:150px;
+    width:780px;
+    height:360px;
+    background:radial-gradient(ellipse at center, rgba(255,255,255,.13), rgba(212,144,93,.08) 34%, transparent 72%);
+    filter:blur(28px);
+    top:180px;
 }}
 .product-img {{
     position:relative;
     z-index:2;
-    max-width:820px;
-    max-height:555px;
+    max-width:850px;
+    max-height:650px;
     object-fit:contain;
-    filter:drop-shadow(0 30px 34px rgba(0,0,0,.72));
+    filter:drop-shadow(0 34px 36px rgba(0,0,0,.76));
 }}
 .details {{
     position:relative;
     z-index:2;
     margin-top:0;
-    padding:22px 0 18px;
-    border-top:1px solid rgba(191,124,78,.55);
-    border-bottom:1px solid rgba(191,124,78,.42);
+    padding:16px 0 14px;
+    border-top:1px solid rgba(191,124,78,.34);
+    border-bottom:1px solid rgba(191,124,78,.24);
 }}
 .detail-row {{
-    display:flex;
-    justify-content:center;
-    gap:22px;
-    flex-wrap:wrap;
+    display:grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap:10px;
     text-align:center;
-}}
-.detail-item {{
-    min-width:118px;
+    align-items:start;
 }}
 .label {{
-    color:#c98b60;
-    font-size:14px;
-    font-weight:500;
-    letter-spacing:1.2px;
+    color:rgba(201,139,96,.86);
+    font-size:10px;
+    font-weight:400;
+    letter-spacing:1.7px;
     text-transform:uppercase;
-    margin-bottom:7px;
+    margin-bottom:6px;
 }}
 .value {{
-    color:#fff5ea;
-    font-size:19px;
-    line-height:1.16;
-    font-weight:400;
+    color:rgba(255,245,234,.92);
+    font-size:14px;
+    line-height:1.2;
+    font-weight:300;
 }}
 .price-label {{
     position:relative;
     z-index:2;
     text-align:center;
-    color:#c98b60;
-    font-size:22px;
-    font-weight:500;
-    letter-spacing:.6px;
-    margin-top:28px;
+    color:rgba(201,139,96,.84);
+    font-size:13px;
+    font-weight:400;
+    letter-spacing:1.4px;
+    margin-top:24px;
     text-transform:uppercase;
 }}
 .price {{
@@ -636,39 +644,39 @@ body {{
     z-index:2;
     text-align:center;
     color:#d49a6a;
-    font-size:54px;
+    font-size:38px;
     line-height:1;
-    font-weight:500;
-    margin-top:10px;
+    font-weight:400;
+    margin-top:9px;
     letter-spacing:.6px;
 }}
 .brand {{
     position:absolute;
-    bottom:26px;
+    bottom:24px;
     left:0;
     right:0;
     text-align:center;
-    color:rgba(255,255,255,.48);
-    font-size:20px;
-    letter-spacing:3px;
-    font-weight:400;
+    color:rgba(255,255,255,.38);
+    font-size:13px;
+    letter-spacing:4px;
+    font-weight:300;
 }}
 .download {{
     width:900px;
     border:0;
     border-radius:12px;
-    padding:16px 20px;
+    padding:15px 20px;
     background:#d4905d;
     color:#111;
-    font-size:20px;
-    font-weight:800;
+    font-size:18px;
+    font-weight:700;
     cursor:pointer;
 }}
 .hint {{
     width:900px;
     color:#ccc;
     font-family:Arial,sans-serif;
-    font-size:14px;
+    font-size:13px;
     text-align:center;
 }}
 </style>
@@ -676,19 +684,20 @@ body {{
 <body>
 <div class="wrap">
 <div id="poster">
+<div class="brand-top">LANA &amp; LONA</div>
 <div class="title">{title}</div>
 <div class="subtitle">{gold}</div>
 <div class="product-area"><div class="glow"></div><img class="product-img" src="{image_data_url}" /></div>
 <div class="details">
   <div class="detail-row">
-    <div class="detail-item"><div class="label">Золото</div><div class="value">585 проба</div></div>
-    <div class="detail-item"><div class="label">Розміри</div><div class="value">{sizes}</div></div>
-    <div class="detail-item"><div class="label">Ширина</div><div class="value">{width_text}</div></div>
-    <div class="detail-item"><div class="label">Покриття</div><div class="value">{coating}</div></div>
-    <div class="detail-item"><div class="label">Вага</div><div class="value">{weight}</div></div>
+    <div><div class="label">Золото</div><div class="value">585 проба</div></div>
+    <div><div class="label">Розміри</div><div class="value">{sizes}</div></div>
+    <div><div class="label">Ширина</div><div class="value">{width_text}</div></div>
+    <div><div class="label">Покриття</div><div class="value">{coating}</div></div>
+    <div><div class="label">Вага</div><div class="value">{weight}</div></div>
   </div>
 </div>
-<div class="price-label">Середня вартість виробу:</div>
+<div class="price-label">Середня вартість</div>
 <div class="price">{price} грн</div>
 <div class="brand">LANA &amp; LONA</div>
 </div>
@@ -708,7 +717,6 @@ async function downloadPoster() {{
 </body>
 </html>
 """.format(**data)
-
 
 def render_poster_block(uploaded_file, poster_data):
     if uploaded_file is None:
