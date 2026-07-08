@@ -556,7 +556,7 @@ body {{
     z-index:2;
     text-align:center;
     color:#d49a6a;
-    font-size:25px;
+    font-size:1px;
     line-height:1.18;
     font-weight:400;
     letter-spacing:1.2px;
